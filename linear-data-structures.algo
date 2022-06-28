@@ -1,0 +1,103 @@
+// Problem 1, Solution 1 with an array.
+ALGORITHM sommePro1_1
+VAR
+    set1, set2 : ARRAY_OF INTEGER[15];
+    i,j : INTEGER;
+    sum; INTEGER:=0;
+    ifexist:BOOLEAN:=false;
+BEGIN
+    FOR i FROM 0 TO set1.lenght  DO
+        ifexist:=false;
+        FOR j FROM min TO set2.lenght DO
+            IF (set1[i]=set2[j]) THEN
+            ifexist:=true;
+            sum+=set2[i]*2
+            BREAK; 
+        END_IF
+
+        IF (ifexist=false) THEN
+            sum+=set1[i]
+        END_IF
+        END_FOR
+
+    END_FOR
+    //reverse tables
+        FOR i FROM 0 TO set2.lenght  DO
+        ifexist:=false;
+        FOR j FROM min TO set1.lenght DO
+            IF (set2[i]=set1[j]) THEN
+            ifexist:=true;
+            BREAK; 
+        END_IF
+
+        IF (ifexist=false) THEN
+            sum+=set2[i]*2
+        END_IF
+
+        END_FOR
+    END_FOR
+
+    write(sum);
+END
+
+ALGORITHM sommePro1_2
+VAR
+    set1, set2 : ARRAY_OF INTEGER[15];
+    i,j : INTEGER;
+    sum; INTEGER:=0;
+    ifexist:BOOLEAN:=false;
+BEGIN
+    FOR i FROM 0 TO set1.lenght  DO
+        ifexist:=false;
+        FOR j FROM min TO set2.lenght DO
+            IF (set1[i]=set2[j]) THEN
+            ifexist:=true;
+            BREAK; 
+        END_IF
+
+        IF (ifexist=false) THEN
+            sum+=set1[i]
+        END_IF
+    END_FOR
+
+    write(sum);
+END
+
+//Problem 1, Solution 2 with an hash table.
+
+ ALGORITHM algorithm_name
+VAR
+    set1,set2: ARRAY_OF INTEGER[20];
+    htab; HASH_TABLE<INTEGER,INTEGER>
+    i,nbocc: INTEGER
+    sum: INTEGER:=0;
+    sumk: INTEGER:=0;
+    t:=ARRAY_OF INTEGER
+BEGIN
+    FOR i FROM 0 TO set1.lenght-1 DO
+        htab.insert(set1[i],1)
+    END_FOR
+    
+    FOR i FROM 0 TO set2.lenght DO
+        IF (htab.lookup(set1[i]=true)) THEN
+            nbocc=htab.get(set2[i])+1
+            htab.insert(set2[i],nbocc)
+        ELSE
+        htab.insert(Set2[i],1)
+        END_IF
+    END_FOR
+
+    t:=htab.getkeys()
+
+    FOR i FROM 0 TO t.lenght-1  DO
+    IF  (htab.get(i)=1) THEN
+        sumd:=t[i];
+    ELSE 
+    sumk:=t[i]*2
+    END_IF
+    
+    END_FOR
+
+    write(sumk) 
+
+END
